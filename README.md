@@ -1,16 +1,8 @@
-# product_utility
+The following 3 points are core parts of this solution - 
 
-A new Flutter project.
+1. TabBarView handles the horizontal swiping between categories. Each tab's content is a ProductList that shows products filtered by the selected category and search query.
 
-## Getting Started
+2. NestedScrollView is the ONE vertical scrollable. It connects the header scroll with the list scroll so the SliverAppBar collapses correctly while the tab body continues scrolling.
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+3. There's an issue in that the products get slide inside the tab bar/ header as the NestedScrollView shares scroll momentum between the header and inner list. By using a single CustomScrollView with a SliverAppBar + SliverPersistentHeader for the tab bar
+   might solve it.
