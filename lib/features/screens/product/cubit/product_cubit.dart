@@ -9,6 +9,14 @@ class ProductCubit extends Cubit<ProductState> {
 
   Future<void> fetchProducts() async {
     emit(ProductLoading());
+    await _loadProducts();
+  }
+
+  Future<void> refreshProducts() async {
+    await _loadProducts();
+  }
+
+  Future<void> _loadProducts() async {
     try {
       final products = await _productRepo.fetchProducts();
       emit(ProductLoaded(products));

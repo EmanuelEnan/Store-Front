@@ -23,7 +23,7 @@ class ProductListState extends State<ProductList>
   bool get wantKeepAlive => true;
 
   Future<void> _onRefresh(BuildContext context) async {
-    await context.read<ProductCubit>().fetchProducts();
+    await context.read<ProductCubit>().refreshProducts();
   }
 
   @override
